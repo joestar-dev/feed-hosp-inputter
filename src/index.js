@@ -24,10 +24,10 @@ import Routes from './routes';
 
 const store = configureStore();
 
-const feed1 = store.dispatch(addExpenses({ description: 'feed1', 
-                                            note: 'Welcome to the jungle1', 
-                                            date: '21032018', 
-                                            genre: 'genre1' }));
+// const feed1 = store.dispatch(addExpenses({ description: 'feed1', 
+//                                             note: 'Welcome to the jungle1', 
+//                                             date: '21032018', 
+//                                             genre: 'genre1' }));
 
 const feed2 = store.dispatch(addExpenses({ description: 'feed2', 
                                             note: 'Welcome to the jungle2', 
