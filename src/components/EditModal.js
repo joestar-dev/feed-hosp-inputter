@@ -17,7 +17,7 @@ const EditModal = (props) => (
       <FeedForm 
         id={props.id}
         onSubmit={(expenses) => {
-          this.props.dispatch(updateExpense(props.id, expenses));
+          props.dispatch(updateExpense(props.id, expenses));
       }}/>
     <button className="modal-close" onClick={props.handleCloseEditModal}>Close</button>
     </div>
