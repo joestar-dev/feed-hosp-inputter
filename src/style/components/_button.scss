@@ -1,0 +1,52 @@
+.big-button {
+  background-color: $light-orange;
+  margin: 2rem auto;
+  display: table;
+  width: 80%;
+  text-align: center;
+  border: none;
+  border-bottom: .6rem solid darken($color: $pure-orange, $amount: 10%);
+  font-weight: bold;
+  font-size: $xs-size; 
+  padding: .5rem;
+}
+.big-button:disabled {
+  opacity: .5;
+}
+.button {
+  background: $pure-orange;
+  border: none;
+  border-bottom: .3rem solid darken($color: $pure-orange, $amount: 10%);
+  font-weight: 500;
+  font-size: $xs-size; 
+  padding: .5rem;
+}
+.button--link {
+  background: none; 
+  border: none;
+  color: $pure-white;
+  padding: 0;
+} 
+.submit-button {
+  padding: 12px;
+  margin: 1rem 0rem 1rem 0rem;
+  background-color: $pure-white;
+  border: 4px solid $pure-grey;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 10pt;
+  background: #efefef;
+}
+.delete-all-button {
+  background-color: $light-orange;
+  padding: 12px;
+  margin: 1rem 0rem 1rem 1rem;
+  border: 4px solid $pure-grey;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.button-row {
+  display: table-cell;
+}
+

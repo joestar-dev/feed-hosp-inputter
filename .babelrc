@@ -1,0 +1,20 @@
+{
+ "presets": [
+  [
+    "env",
+    {
+      "targets": {
+          "browsers":["last 2 versions"],
+          "node":"current"
+      }
+    }
+], 
+["react"], 
+["es2015"]
+ ],
+ "plugins": [
+   "transform-class-properties",
+   "transform-object-rest-spread",
+   "transform-decorators-legacy"
+ ]   
+}

@@ -1,0 +1,18 @@
+//BEM stand for block element modifier
+//example .header is a block, element is tag inside .header 
+
+.header {
+  background: $light-blue;
+  margin-bottom: $md-size;
+  padding: $xs-size 0;
+}
+.header__title {
+  font-size: $sm-size;
+  margin: 0;
+}
+.header__subtitle {
+  color: $pure-grey;
+  font-size: $xs-size;
+  font-weight: 500;
+  margin: 0;
+}

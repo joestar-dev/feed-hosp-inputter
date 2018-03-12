@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Header component correctly 1`] = `
+<div
+  className="header"
+>
+  <div
+    className="container"
+  >
+    <h1
+      className="header__title"
+    >
+      Hospital Feed Inputter
+    </h1>
+    <h2
+      className="header__subtitle"
+    />
+  </div>
+</div>
+`;

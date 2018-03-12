@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render BadRequest corectly 1`] = `
+<div>
+  <div>
+    Bad Request 
+    <Link
+      activeClassName="is-active"
+      replace={false}
+      to="/"
+    >
+      Go Home
+    </Link>
+  </div>
+</div>
+`;
