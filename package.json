@@ -13,14 +13,9 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.9",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "enzyme-to-json": "^3.3.1",
     "express": "^4.16.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
-    "jest": "20.0.4",
-    "live-server": "^1.2.0",
     "moment": "^2.20.1",
     "node-sass": "^4.7.2",
     "normalize.css": "^7.0.0",
@@ -37,7 +32,6 @@
     "react-scripts": "1.1.0",
     "react-tabs": "^2.2.1",
     "react-tap-event-plugin": "^3.0.2",
-    "react-test-renderer": "^16.2.0",
     "react-textarea-autosize": "^5.2.1",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
@@ -45,8 +39,7 @@
     "style-loader": "^0.20.1",
     "uuid": "^3.2.1",
     "validator": "^9.2.0",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.1"
+    "webpack": "^3.10.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -55,13 +48,20 @@
     "test-jest": "jest --watch",
     "test-jest-con": "jest --config=jest.config.json --watch",
     "eject": "react-scripts eject",
-    "serve": "live-server public/",
     "start-server": "node server/server.js",
-    "heroku-postbuild": "yarn run build:prod",
+    "heroku-postbuild": "yarn run build:prod", 
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
     "webpack": "webpack --watch",
     "dev-server": "webpack-dev-server",
     "babel": "babel src/index.js --out-file=public/bundle.js --presets=env,react --watch"
+  },
+  "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.1",
+    "jest": "20.0.4",
+    "react-test-renderer": "^16.2.0",
+    "webpack-dev-server": "^2.11.1"
   }
 }
