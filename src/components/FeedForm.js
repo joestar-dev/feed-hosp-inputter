@@ -192,7 +192,7 @@ class FeedForm extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   // console.log(`ownprops ${ownProps.id}`)
-  return  {
+  return {
     expenses: state.expenses.find((expense) => expense.id === ownProps.id)
   };
 };

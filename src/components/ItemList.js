@@ -51,7 +51,7 @@ class ItemList extends Component {
     // const randomNumber = Math.floor(Math.random() * this.state.checkItem.length);
     // const randomNumber = Math.floor(Math.random() * this.state.it.length);
     // console.log(randomNumber, this.state.checkItem.length);
-    //const option = this.state.options[randomNumber];
+    // const option = this.state.options[randomNumber];
     // const item = this.state.it.concat(randomNumber);
 
     this.setState(() => ({
@@ -86,7 +86,6 @@ class ItemList extends Component {
     }));
   };
   onResetForm = (e) => {
-    console.log(e)
     this.setState(() => ({
       error: '',
       id: '',
@@ -99,7 +98,6 @@ class ItemList extends Component {
   };
   render() {
     const { expenses } = this.props;
-    // const id = this.state.id ? this.state.id : ''
     const { id } = this.state;
     const ItemListHeader = () => (
       <div className="table">
@@ -132,7 +130,7 @@ class ItemList extends Component {
           onSubmit={(expenses) => {
               id ? this.props.dispatch(updateExpense(id, expenses)) : 
             this.props.dispatch(addExpenses(expenses));
-            this.onResetForm
+            // this.onResetForm
           }}/>
         <ExpenseListFilters />
         <ItemListHeader />
@@ -166,4 +164,11 @@ const mapStateToProps = (state) => {
     expenses: selectedExpense(state.expenses, state.filters)
   }
 }
-export default connect(mapStateToProps)(ItemList);
+
+// const mapDispatchToProps = (dispatch) => {
+//   startAddExpense: (expenses) => dispatch(startAddExpense(expenses))
+// }
+export default connect(
+  mapStateToProps,
+  // mapDispatchToProps
+)(ItemList);
