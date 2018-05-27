@@ -1,21 +1,21 @@
-import moment from 'moment';
+import moment from 'moment'
 
 export default [{
   id: '1',
-  description: 'feed1', 
-  note: 'Welcome to the jungle1', 
-  date: 0, 
-  genre: 'genre1'
+  description: 'Gum',
+  note: '',
+  amount: 195,
+  createdAt: 0
 }, {
   id: '2',
-  description: 'feed3', 
-  note: 'Welcome to the jungle3', 
-  date: moment(0).subtract(4, 'days').valueOf(),
-  genre: 'genre3'
+  description: 'Rent',
+  note: '',
+  amount: 109500,
+  createdAt: moment(0).subtract(4, 'days').valueOf()
 }, {
   id: '3',
-  description: 'feed4', 
-  note: 'Welcome to the jungle4', 
-  date: moment(0).add(4, 'days').valueOf(),
-  genre: 'genre4'
+  description: 'Credit Card',
+  note: '',
+  amount: 4500,
+  createdAt: moment(0).add(4, 'days').valueOf()
 }];

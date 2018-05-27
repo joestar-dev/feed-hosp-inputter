@@ -1,36 +1,35 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin'); 
-const webpack = require("webpack");
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-if(process.env.NODE_ENV === 'test') {
+if (process.env.NODE_ENV === 'test') {
   require('dotenv').config({ path: '.env.test' });
-} else if(process.env.NODE_ENV === 'development') {
+} else if (process.env.NODE_ENV === 'development') {
   require('dotenv').config({ path: '.env.development' });
 }
 
 module.exports = (env) => {
-  console.log('env ', env)
   const isProduction = env === 'production';
   const CSSExtract = new ExtractTextPlugin('styles.css');
+
   return {
-    entry: path.resolve(__dirname, 'src/index.js'),
+    // entry: './src/app.js',
+    entry: ['babel-polyfill', './src/app.js'],
     output: {
-      path: path.resolve(__dirname, 'public', 'dist'),
+      path: path.join(__dirname, 'public', 'dist'),
       filename: 'bundle.js'
-  },
-  module: {
-    rules: [{
-      loader: 'babel-loader',
-      test: /\.jsx?$/,
-      // test: /\.(js|jsx)$/,
-      exclude: /node_modules/
-    }, 
-    {
-      test: /\.s?css$/,
-      use: CSSExtract.extract({
-        use: [
+    },
+    module: {
+      rules: [{
+        loader: 'babel-loader',
+        test: /\.js$/,
+        exclude: /node_modules/
+      }, {
+        test: /\.s?css$/,
+        use: CSSExtract.extract({
+          use: [
             {
               loader: 'css-loader',
               options: {
@@ -41,34 +40,28 @@ module.exports = (env) => {
               loader: 'sass-loader',
               options: {
                 sourceMap: true
+              }
             }
-          },
-        ]
+          ]
+        })
+      }]
+    },
+    plugins: [
+      CSSExtract,
+      new webpack.DefinePlugin({
+        'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
+        'process.env.FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
+        'process.env.FIREBASE_DATABASE_URL': JSON.stringify(process.env.FIREBASE_DATABASE_URL),
+        'process.env.FIREBASE_PROJECT_ID': JSON.stringify(process.env.FIREBASE_PROJECT_ID),
+        'process.env.FIREBASE_STORAGE_BUCKET': JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
+        'process.env.FIREBASE_MESSAGING_SENDER_ID': JSON.stringify(process.env.FIREBASE_MESSAGING_SENDER_ID)
       })
-      // use: [
-      //   'style-loader',
-      //   'css-loader',
-      //   'sass-loader'
-      // ], 
-    }]
-  },
-  plugins: [
-    CSSExtract,
-    new webpack.DefinePlugin({ 
-      'process.env.FIREBASE_API_KEY' : JSON.stringify(process.env.FIREBASE_API_KEY),
-      'process.env.FIREBASE_AUTH_DOMAIN' : JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
-      'process.env.FIREBASE_DATABASE_URL' : JSON.stringify(process.env.FIREBASE_DATABASE_URL),
-      'process.env.FIREBASE_PROJECT_ID' : JSON.stringify(process.env.FIREBASE_PROJECT_ID),
-      'process.env.FIREBASE_STORAGE_BUCKET' : JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
-      'process.env.FIREBASE_MESSAGING_SENDER_ID' : JSON.stringify(process.env.FIREBASE_MESSAGING_SENDER_ID)
-    })
-  ],
-  devtool: isProduction ? 'source-map' : 'inline-source-map' ,
-  // devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map' ,
-  devServer: {
-    historyApiFallback: true,
-    contentBase: path.join(__dirname, 'public'),
-    publicPath: '/dist/'
-  }
-  }
-}
+    ],
+    devtool: isProduction ? 'source-map' : 'inline-source-map',
+    devServer: {
+      contentBase: path.join(__dirname, 'public'),
+      historyApiFallback: true,
+      publicPath: '/dist/'
+    }
+  };
+};

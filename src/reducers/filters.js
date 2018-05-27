@@ -1,31 +1,20 @@
-//Filter Reducer
 import moment from 'moment';
 
-const filterReducerDefaultState = {
-  id: '',
-  text: '',
-  sortBy: 'date', 
-  // genre: 'type', 
-  // amount: ,
-  // startDate: moment().startOf('month'),
-  // endDate: moment().endOf('month')
-  // var time = moment().startOf('day')
-  // var end = time.clone().endOf('day');
-  startDate: undefined,
-  endDate: undefined
-}
+// Filters Reducer
 
-export default (state = filterReducerDefaultState, action) => {
+const filtersReducerDefaultState = {
+  text: '',
+  sortBy: 'date',
+  startDate: moment().startOf('month'),
+  endDate: moment().endOf('month')
+};
+
+export default (state = filtersReducerDefaultState, action) => {
   switch (action.type) {
     case 'SET_TEXT_FILTER':
       return {
         ...state,
         text: action.text
-      };
-    case 'SORT_BY_ID':
-      return {
-        ...state,
-        sortBy: 'id'
       };
     case 'SORT_BY_AMOUNT':
       return {
@@ -36,20 +25,18 @@ export default (state = filterReducerDefaultState, action) => {
       return {
         ...state,
         sortBy: 'date'
-      }; 
+      };
     case 'SET_START_DATE':
       return {
         ...state,
         startDate: action.startDate
-      }
+      };
     case 'SET_END_DATE':
       return {
         ...state,
         endDate: action.endDate
-      }
+      };
     default:
       return state;
   }
-}
-
-// export default filterReducer;
+};

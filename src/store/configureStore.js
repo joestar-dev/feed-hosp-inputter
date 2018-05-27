@@ -1,25 +1,18 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import expensesReducer from '../reducers/expenses';
-import filterReducer from '../reducers/filters';
-import { reduxFirebase, firebaseStateReducer } from 'react-redux-firebase';
+import filtersReducer from '../reducers/filters';
 import thunk from 'redux-thunk';
-// import config from '../firebase.credential';
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const composeEnhancer = window.__REDUX_DEVTOOL_EXTENSION_COMPOSE__ || compose;
-
-//store creation
 export default () => {
   const store = createStore(
     combineReducers({
-      firebase: firebaseStateReducer,
       expenses: expensesReducer,
-      filters: filterReducer
+      filters: filtersReducer
     }),
-    composeEnhancer(applyMiddleware(thunk))
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeEnhancers(applyMiddleware(thunk))
   );
-  return store;
-}
 
-// export default store;
+  return store;
+};
