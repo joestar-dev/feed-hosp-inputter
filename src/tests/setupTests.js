@@ -7,3 +7,7 @@ configure({
 }); 
 
 DotEnv.config({ path: '.env.test' });
+
+// global.requestAnimationFrame = function(callback) {
+//   setTimeout(callback, 0);
+// };
